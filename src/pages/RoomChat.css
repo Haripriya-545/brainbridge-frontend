@@ -1,0 +1,65 @@
+.message {
+  display: flex;
+  margin: 10px;
+}
+
+.message.me {
+  justify-content: flex-end;
+}
+
+.message.other {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 60%;
+  padding: 12px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.message.other .bubble {
+  background: #ffffff;
+}
+
+.time {
+  font-size: 10px;
+  color: gray;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tick {
+  margin-left: 5px;
+}
+
+.tick.seen {
+  color: blue;
+}
+
+.input-box {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.input-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.input-box button {
+  background: #5865f2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+body {
+  background: rgb(255, 255, 255) !important;
+}
