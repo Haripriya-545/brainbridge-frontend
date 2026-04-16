@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { GoogleLogin } from '@react-oauth/google';
 function Login() {
 
   const [email, setEmail] = useState("");
@@ -137,6 +137,14 @@ function Login() {
       >
         Login
       </button>
+      <GoogleLogin
+  onSuccess={(credentialResponse) => {
+    console.log("Google Login Success:", credentialResponse);
+  }}
+  onError={() => {
+    console.log("Login Failed");
+  }}
+/>
 
       {/* ERROR */}
       {error && (
