@@ -82,24 +82,28 @@ function Dashboard() {
       console.error("Join error:", err);
     }
   };
-  const deleteRoom = async (id) => {
+ const deleteRoom = async (id) => {
   try {
-    const token = localStorage.getItem("token");
-
-    await axios.delete(`${API}/rooms/${id}`, {
+    await fetch(`https://brainbridge-backend-1.onrender.com/rooms/${id}`, {
+      method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: "Bearer " + token
+      }
     });
 
-    // remove from UI instantly
-    setRooms(rooms.filter((room) => room._id !== id));
+    // update UI
+    setRooms(prev => prev.filter(room => room.id !== id));
+
+    // if deleted room was selected
+    if (selectedRoom?.id === id) {
+      setSelectedRoom(null);
+      setMessages([]);
+    }
 
   } catch (err) {
     console.error("Delete failed", err);
   }
 };
-
   /* ==========================
      LOAD MESSAGES
   ========================== */
@@ -290,6 +294,15 @@ function Dashboard() {
     sendMessage={sendMessage}
   />
 )}
+<Sidebar
+  rooms={rooms}
+  joinRoom={joinRoom}
+  newRoom={newRoom}
+  setNewRoom={setNewRoom}
+  createRoom={createRoom}
+  selectedRoom={selectedRoom}
+  deleteRoom={deleteRoom}   // ✅ ADD THIS
+/>
 
       </div>
 

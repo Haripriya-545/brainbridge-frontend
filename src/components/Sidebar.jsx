@@ -4,7 +4,8 @@ function Sidebar({
   newRoom,
   setNewRoom,
   createRoom,
-  selectedRoom
+  selectedRoom,
+  deleteRoom   // ✅ ADD THIS
 }) {
 
   return (
@@ -31,76 +32,54 @@ function Sidebar({
 
       {rooms.map((room) => (
 
-        <div
-          key={room.id}
-          onClick={() => joinRoom(room)}
-          style={{
-            padding: "10px",
-            cursor: "pointer",
-            borderRadius: "10px",
-            marginBottom: "8px",
-            transition: "0.2s",
-            background:
-              selectedRoom?.id === room.id
-                ? "#a44a3f" // 🔥 active room
-                : "rgba(255,255,255,0.4)",
+  <div
+    key={room.id}
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "10px",
+      borderRadius: "10px",
+      marginBottom: "8px",
+      background:
+        selectedRoom?.id === room.id
+          ? "#a44a3f"
+          : "rgba(255,255,255,0.4)",
+      color:
+        selectedRoom?.id === room.id
+          ? "white"
+          : "#3a2e2a",
+      cursor: "pointer"
+    }}
+  >
 
-            color:
-              selectedRoom?.id === room.id
-                ? "white"
-                : "#3a2e2a",
+    {/* ROOM NAME */}
+    <span onClick={() => joinRoom(room)}>
+      # {room.name}
+    </span>
 
-            boxShadow:
-              selectedRoom?.id === room.id
-                ? "0 4px 10px rgba(0,0,0,0.2)"
-                : "none"
-          }}
-        >
-          # {room.name}
-        </div>
+    {/* DELETE BUTTON */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation(); // ❗ prevents join click
+        if (window.confirm("Delete this room?")) {
+          deleteRoom(room.id);
+        }
+      }}
+      style={{
+        background: "transparent",
+        border: "none",
+        color: "red",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ❌
+    </button>
 
-      ))}
+  </div>
 
-      <hr style={{ opacity: 0.2, marginTop: "20px" }} />
-
-      {/* CREATE ROOM */}
-
-      <input
-        value={newRoom}
-        onChange={(e) => setNewRoom(e.target.value)}
-        placeholder="New room"
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginTop: "10px",
-          borderRadius: "10px",
-          border: "none",
-          outline: "none",
-          background: "rgba(255,255,255,0.6)",
-          color: "#3a2e2a"
-        }}
-      />
-
-      <button
-        onClick={createRoom}
-        style={{
-          marginTop: "10px",
-          width: "100%",
-          padding: "10px",
-          borderRadius: "10px",
-          border: "none",
-          background: "#a44a3f",
-          color: "white",
-          cursor: "pointer",
-          fontWeight: "bold",
-          transition: "0.2s"
-        }}
-      >
-        + Create Room
-      </button>
-      <button onClick={() => deleteRoom(room._id)}>
-  ❌
-</button>
+))}
 
     </div>
 
