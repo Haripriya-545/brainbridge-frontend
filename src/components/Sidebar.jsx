@@ -98,6 +98,9 @@ function Sidebar({
       >
         + Create Room
       </button>
+      <button onClick={() => deleteRoom(room._id)}>
+  ❌
+</button>
 
     </div>
 

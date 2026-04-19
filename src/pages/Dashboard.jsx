@@ -82,6 +82,23 @@ function Dashboard() {
       console.error("Join error:", err);
     }
   };
+  const deleteRoom = async (id) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    await axios.delete(`${API}/rooms/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // remove from UI instantly
+    setRooms(rooms.filter((room) => room._id !== id));
+
+  } catch (err) {
+    console.error("Delete failed", err);
+  }
+};
 
   /* ==========================
      LOAD MESSAGES
