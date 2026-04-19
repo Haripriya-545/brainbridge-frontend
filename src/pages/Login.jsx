@@ -81,7 +81,6 @@ function Login() {
   const handleGoogleSuccess = async (response) => {
     try {
       setError("");
-      console.log("Google Login Success:", response);
 
       if (!response.credential) {
         setError("Google token missing");
@@ -99,10 +98,15 @@ function Login() {
 
       console.log("Backend Response:", res.data);
 
+      if (!res.data.token) {
+        setError("Invalid Google login response");
+        return;
+      }
+
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.id);
       localStorage.setItem("name", res.data.name);
-      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("email", res.data.email || "");
 
       window.location.href = "/dashboard";
     } catch (err) {
