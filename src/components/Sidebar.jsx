@@ -31,54 +31,55 @@ function Sidebar({
       <h4 style={{ marginTop: "15px" }}>Rooms</h4>
 
       {rooms.map((room) => (
-
   <div
-    key={room.id}
+    key={room._id}
     style={{
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "10px",
-      borderRadius: "10px",
       marginBottom: "8px",
-      background:
-        selectedRoom?.id === room.id
-          ? "#a44a3f"
-          : "rgba(255,255,255,0.4)",
-      color:
-        selectedRoom?.id === room.id
-          ? "white"
-          : "#3a2e2a",
-      cursor: "pointer"
     }}
   >
-
-    {/* ROOM NAME */}
-    <span onClick={() => joinRoom(room)}>
+    {/* Room Name */}
+    <div
+      onClick={() => joinRoom(room)}
+      style={{
+        flex: 1,
+        padding: "10px",
+        cursor: "pointer",
+        borderRadius: "10px",
+        background:
+          selectedRoom?._id === room._id
+            ? "#a44a3f"
+            : "rgba(255,255,255,0.4)",
+        color:
+          selectedRoom?._id === room._id
+            ? "white"
+            : "#3a2e2a",
+      }}
+    >
       # {room.name}
-    </span>
+    </div>
 
     {/* DELETE BUTTON */}
     <button
-      onClick={(e) => {
-        e.stopPropagation(); // ❗ prevents join click
+      onClick={() => {
         if (window.confirm("Delete this room?")) {
-          deleteRoom(room.id);
+          deleteRoom(room._id);
         }
       }}
       style={{
+        marginLeft: "10px",
         background: "transparent",
         border: "none",
         color: "red",
         cursor: "pointer",
-        fontSize: "16px"
+        fontSize: "18px",
       }}
     >
       ❌
     </button>
-
   </div>
-
 ))}
 
     </div>
