@@ -41,7 +41,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "https://brainbridge-backend-1.onrender.com/login",
+        "https://brainbridge-backend-3uz6.onrender.com/login",
         {
           method: "POST",
           headers: {
@@ -90,7 +90,7 @@ function Login() {
       setLoading(true);
 
       const res = await axios.post(
-        "https://brainbridge-backend-1.onrender.com/google-login",
+        "https://brainbridge-backend-3uz6.onrender.com/google-login",
         {
           token: response.credential,
         }

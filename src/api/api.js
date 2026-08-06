@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://brainbridge-backend-1.onrender.com",
+  baseURL: "https://brainbridge-backend-3uz6.onrender.com",
 });
 
 api.interceptors.request.use((config) => {

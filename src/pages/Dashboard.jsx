@@ -31,7 +31,7 @@ function Dashboard() {
 
   const loadRooms = async () => {
     try {
-      const res = await fetch("https://brainbridge-backend-1.onrender.com/rooms", {
+      const res = await fetch("https://brainbridge-backend-3uz6.onrender.com/rooms", {
         headers: {
           Authorization: "Bearer " + token
         }
@@ -69,7 +69,7 @@ function Dashboard() {
     setMessages([]);
 
     try {
-      await fetch(`https://brainbridge-backend-1.onrender.com/rooms/${room.id}/join`, {
+      await fetch(`https://brainbridge-backend-3uz6.onrender.com/rooms/${room.id}/join`, {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token
@@ -84,7 +84,7 @@ function Dashboard() {
   };
  const deleteRoom = async (id) => {
   try {
-    await fetch(`https://brainbridge-backend-1.onrender.com/rooms/${id}`, {
+    await fetch(`https://brainbridge-backend-3uz6.onrender.com/rooms/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token
@@ -112,7 +112,7 @@ function Dashboard() {
 
     try {
       const res = await fetch(
-        `http://https://brainbridge-backend-1.onrender.com/rooms/${roomId}/messages`,
+        `http://https://brainbridge-backend-3uz6.onrender.com/rooms/${roomId}/messages`,
         {
           headers: {
             Authorization: "Bearer " + token
@@ -157,7 +157,7 @@ function Dashboard() {
 
     try {
       const res = await fetch(
-        `https://brainbridge-backend-1.onrender.com/rooms/${selectedRoom.id}/message`,
+        `https://brainbridge-backend-3uz6.onrender.com/rooms/${selectedRoom.id}/message`,
         {
           method: "POST",
           headers: {
@@ -189,7 +189,7 @@ function Dashboard() {
 
     try {
       const res = await fetch(
-        `https://brainbridge-backend-1.onrender.com/messages/${msg.id}`,
+        `https://brainbridge-backend-3uz6.onrender.com/messages/${msg.id}`,
         {
           method: "PUT",
           headers: {
@@ -224,7 +224,7 @@ function Dashboard() {
     if (!newRoom.trim()) return;
 
     try {
-      await fetch("https://brainbridge-backend-1.onrender.com/rooms", {
+      await fetch("https://brainbridge-backend-3uz6.onrender.com/rooms", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

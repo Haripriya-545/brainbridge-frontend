@@ -20,7 +20,7 @@ function RoomChat() {
   const loadMessages = async () => {
     try {
       const res = await fetch(
-        `https://brainbridge-backend-1.onrender.com/rooms/${roomId}/messages`,
+        `https://brainbridge-backend-3uz6.onrender.com/rooms/${roomId}/messages`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -57,7 +57,7 @@ function RoomChat() {
 
     try {
       await fetch(
-        `https://brainbridge-backend-1.onrender.com/rooms/${roomId}/message`,
+        `https://brainbridge-backend-3uz6.onrender.com/rooms/${roomId}/message`,
         {
           method: "POST",
           headers: {

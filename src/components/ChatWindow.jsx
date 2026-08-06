@@ -23,7 +23,7 @@ function ChatWindow({ roomId }) {
   const loadMessages = async () => {
     try {
       const res = await fetch(
-        `https://brainbridge-backend-1.onrender.com/rooms/${roomId}/messages`,
+        `https://brainbridge-backend-3uz6.onrender.com/rooms/${roomId}/messages`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -51,7 +51,7 @@ function ChatWindow({ roomId }) {
 
   useEffect(() => {
 
-    socket.current = io("https://brainbridge-backend-1.onrender.com");
+    socket.current = io("https://brainbridge-backend-3uz6.onrender.com");
 
     socket.current.emit("joinRoom", {
       roomId,
